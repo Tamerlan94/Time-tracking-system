@@ -18,8 +18,10 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $isCorrect = Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('password')]);
-
-        if($isCorrect) return view('/index');
-        else return back()->withErrors();
+        if($isCorrect){
+            session(['role' => Auth::user()->role]);
+            return view('/index');
+        }
+        else return back()->with('error', 'Failed to login');
     }
 }
