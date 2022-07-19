@@ -10,7 +10,7 @@ class WorkHours extends Model
     use HasFactory;
 
     public function task(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
     protected $fillable = [
