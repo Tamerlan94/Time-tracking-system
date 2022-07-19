@@ -19,12 +19,12 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
               [
                   'username' => 'name',
-                  'role' => 'super-admin',
+                  'role_id' => 1,
                   'password' => Hash::make('123'),
               ],
             [
                 'username' => 'testuser',
-                'role' => 'user',
+                'role_id' => 3,
                 'password' => Hash::make('123'),
             ]
         ]);
