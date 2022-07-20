@@ -3,11 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Service\ProjectService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    public ProjectService $projectService;
+
+    public function __construct()
+    {
+        $this->projectService = new ProjectService();
+    }
 
     public function index()
     {
@@ -21,18 +28,17 @@ class LoginController extends Controller
             $user = User::find(Auth::user()->getAuthIdentifier());
 
             $role = $user->role;
-            $projects = $user->projects;
-            $tasks_by_user = $user->tasks;
             session([
                 'role' => $role->name,
-                'projects' => $projects,
-                'tasks' => $tasks_by_user
                 ]);
 
-            dd(session('tasks'));
+            $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
 
+            dd(session('projects'));
             //return view('/index');
         }
-        else return back()->with('error', 'Failed to login');
+        else return back()->with([
+            'error' =>  'Failed to login',
+        ]);
     }
 }
