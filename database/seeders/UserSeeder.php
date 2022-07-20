@@ -26,6 +26,11 @@ class UserSeeder extends Seeder
                 'username' => 'testuser',
                 'role_id' => 3,
                 'password' => Hash::make('123'),
+            ],
+            [
+                'username' => 'managertest',
+                'role_id' => 2,
+                'password' => Hash::make('123'),
             ]
         ]);
 

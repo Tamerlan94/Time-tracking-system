@@ -19,8 +19,12 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function project(){
+    public function projects(){
         return $this->belongsToMany(Project::class, 'user_project');
+    }
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
     }
 
     /**
@@ -29,10 +33,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'username',
-        'email',
+        'first_name',
+        'middle_name',
+        'last_name',
         'role_id',
         'password',
     ];
-
 }

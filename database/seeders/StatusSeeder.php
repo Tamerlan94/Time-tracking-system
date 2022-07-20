@@ -17,30 +17,37 @@ class StatusSeeder extends Seeder
     {
         DB::table('statuses')->insert([
             [
+                'id' => 1,
                 'name' => 'Назначенные',
                 'role_id' => 3,
             ],
             [
+                'id' => 2,
                 'name' => 'В работе',
                 'role_id' => 3,
             ],
             [
+                'id' => 3,
                 'name' => 'Выполненные',
                 'role_id' => 3,
             ],
             [
+                'id' => 4,
                 'name' => 'Завершённые',
                 'role_id' => 3,
             ],
             [
+                'id' => 5,
                 'name' => 'На паузе',
                 'role_id' => 3,
             ],
             [
+                'id' => 6,
                 'name' => 'Скрам-встреча',
                 'role_id' => 2,
             ],
             [
+                'id' => 7,
                 'name' => 'Совещание',
                 'role_id' => 2,
             ],
