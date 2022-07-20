@@ -21,8 +21,24 @@ class TaskSeeder extends Seeder
                 'project_id' => 1,
                 'status_id' => 1,
                 'user_id' => 2,
-                'name' => 'Тестовая задача',
+                'name' => 'Тестовая задача1',
                 'deadline' => '2022-07-20',
+            ],
+            [
+                'id' => 2,
+                'project_id' => 1,
+                'status_id' => 1,
+                'user_id' => 3,
+                'name' => 'Тестовая задача2',
+                'deadline' => '2022-07-23',
+            ],
+            [
+                'id' => 3,
+                'project_id' => 1,
+                'status_id' => 1,
+                'user_id' => 1,
+                'name' => 'Тестовая задача3',
+                'deadline' => '2022-07-25',
             ],
         ]);
     }

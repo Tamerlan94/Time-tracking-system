@@ -28,9 +28,10 @@ Route::controller(UserController::class)->prefix('user')->name('user')->group(fu
 });
 
 Route::controller(TaskController::class)->prefix('task')->name('task')->group(function (){
-    Route::post('create', 'createTask')->name('create');
+    Route::post('create-update', 'createOrUpdateTask')->name('create');
+    Route::post('change-status', 'changeStatus')->name('change-status');
 });
 
 Route::controller(ProjectController::class)->prefix('project')->name('project')->group(function (){
-    Route::post('create', 'createProject')->name('create');
+    Route::post('create-update', 'createOrUpdateProject')->name('create');
 });
