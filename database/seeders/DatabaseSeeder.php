@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             StatusSeeder::class,
             ProjectSeeder::class,
-            UserProjectSeeder::class
+            UserProjectSeeder::class,
+            TaskSeeder::class,
+            WorkHoursSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

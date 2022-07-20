@@ -22,12 +22,14 @@ class LoginController extends Controller
 
             $role = $user->role;
             $projects = $user->projects;
+            $tasks_by_user = $user->tasks;
             session([
                 'role' => $role->name,
-                'projects' => $projects
+                'projects' => $projects,
+                'tasks' => $tasks_by_user
                 ]);
 
-            dd(session('projects'));
+            dd(session('tasks'));
 
             //return view('/index');
         }

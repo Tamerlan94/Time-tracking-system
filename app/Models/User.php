@@ -23,16 +23,22 @@ class User extends Authenticatable
         return $this->belongsToMany(Project::class, 'user_project');
     }
 
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'username',
-        'email',
+        'first_name',
+        'middle_name',
+        'last_name',
         'role_id',
         'password',
     ];
-
 }
