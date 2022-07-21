@@ -23,15 +23,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 // роуты находятся в файле api, что означает что перед каждым адресом будет стоять prefix api
-Route::controller(UserController::class)->prefix('user')->name('user')->group(function (){
+Route::controller(UserController::class)->prefix('user')->name('user')->middleware('role.check')->group(function (){
     Route::post('create-update', 'createOrUpdateUser')->name('create');
 });
 
-Route::controller(TaskController::class)->prefix('task')->name('task')->group(function (){
+Route::controller(TaskController::class)->prefix('task')->name('task')->middleware('role.check')->group(function (){
     Route::post('create-update', 'createOrUpdateTask')->name('create');
     Route::post('change-status', 'changeStatus')->name('change-status');
 });
 
-Route::controller(ProjectController::class)->prefix('project')->name('project')->group(function (){
+Route::controller(ProjectController::class)->prefix('project')->name('project')->middleware('role.check')->group(function (){
     Route::post('create-update', 'createOrUpdateProject')->name('create');
 });

@@ -34,8 +34,8 @@ class LoginController extends Controller
 
             $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
 
-            dd(session('projects'));
-            //return view('/index');
+            //dd(session('projects'));
+            return redirect('/');
         }
         else return back()->with([
             'error' =>  'Failed to login',
