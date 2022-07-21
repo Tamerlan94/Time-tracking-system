@@ -15,7 +15,7 @@ class ProjectController extends Controller
         $this->baseService = new BaseService();
     }
 
-    public function createOrUpdateTask(Request $request){
+    public function createOrUpdateProject(Request $request){
         $create_array = [
             'name' => $request->get('name'),
             'manager_id' => $request->get('manager_id'),

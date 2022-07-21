@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use App\Service\BaseService;
+use App\Service\TaskService;
+use Database\Seeders\TaskSeeder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class TaskController extends Controller
 {
     public BaseService $baseService;
+    public TaskService $taskService;
 
     public function __construct()
     {
         $this->baseService = new BaseService();
+        $this->taskService = new TaskService();
     }
 
     public function createOrUpdateTask(Request $request){
@@ -30,5 +34,11 @@ class TaskController extends Controller
         }
 
         return $this->baseService->updateOrCreate(new Task(), $create_array);
+    }
+
+    public function changeStatus(Request $request){
+        $this->taskService->changeStatus($request->get('id'), $request->get('status_id'));
+
+        return response('success', 200);
     }
 }

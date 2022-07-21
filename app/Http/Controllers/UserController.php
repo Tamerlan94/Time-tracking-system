@@ -19,6 +19,9 @@ class UserController extends Controller
     public function createOrUpdateUser(Request $request){
         $create_array = [
             'username' => $request->get('username'),
+            'first_name' => $request->get('first_name'),
+            'middle_name' => $request->get('middle_name'),
+            'last_name' => $request->get('last_name'),
             'password' => Hash::make($request->get('password')),
             'role_id' => $request->get('role_id')
         ];

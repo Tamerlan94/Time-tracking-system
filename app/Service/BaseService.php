@@ -9,11 +9,18 @@ class BaseService
 {
     public function updateOrCreate($model, $params){
         if(key_exists('id', $params)){
-            User::query()
+            $temp_array = [];
+            foreach ($params as $key => $value){
+                if($value !== null){
+                    $temp_array[$key] = $value;
+                }
+            }
+
+            $model::query()
                 ->find($params['id'])
-                ->update($params);
+                ->update($temp_array);
         } else {
-            User::create($params);
+            $model::create($params);
         }
 
         return response('success', 200);
