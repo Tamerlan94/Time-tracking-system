@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class BaseService
@@ -24,5 +25,9 @@ class BaseService
         }
 
         return response('success', 200);
+    }
+
+    public function getCurrentUserRole(){
+        return session('role.name');
     }
 }

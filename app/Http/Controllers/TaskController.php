@@ -41,4 +41,8 @@ class TaskController extends Controller
 
         return response('success', 200);
     }
+
+    public function checkRole(){
+        return response('success');
+    }
 }

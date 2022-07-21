@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Service\BaseService;
 use Closure;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,23 +20,27 @@ class RoleCheckMiddleware
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse
     {
-        if(!Auth::check()) return redirect('/login');
-
         if($request->getRequestUri() === '/' || $request->getRequestUri() === '') {
-            return $next($request);
+            if(!Auth::check()){
+                return redirect()->route('index');
+            }
         }
 
-        $uri = explode('/', $request->getRequestUri());
-        $role = session('role');
+        $baseService = new BaseService();
 
-        switch ($uri[2]){
-            case 'project':
-            case 'task':
-                if($role !== 'manager' || $role !== 'admin') return redirect('/login')->with('error', 'Access denied');
-                break;
-            case 'user':
-                if($role !== 'admin') return redirect('/login')->with('error', 'Access denied');
-                break;
+        $uri = explode('/', $request->getRequestUri());
+        $role = $request->cookie('role');
+
+        if(key_exists(2, $uri)){
+            switch ($uri[2]){
+                case 'project':
+                case 'task':
+                    if($role !== 'manager' && $role !== 'admin') return redirect()->route('index')->with('error', 'Access denied');
+                    else return $next($request);
+                case 'user':
+                    if(session('role') !== 'admin') return redirect()->route('index')->with('error', 'Access denied');
+                    break;
+            }
         }
 
         return $next($request);
