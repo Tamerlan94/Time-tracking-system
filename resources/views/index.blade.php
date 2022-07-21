@@ -1,4 +1,4 @@
-@extends('Layout.main')
+@extends('layout.main')
 
 @section('content')
     <div class="border rounded-2">
@@ -8,9 +8,7 @@
                     src="https://advancingdatajustice.turing.ac.uk/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"
                     class="img-fluid" alt="avatar" style="width: 130px">
                 <select name="" class="form-select form-select-sm" disabled>
-                    <option value="1">Админ</option>
-                    <option value="2">Менеджер</option>
-                    <option selected value="3">Пользователь</option>
+                    <option selected value="1">{{ auth()->user()->role->name }}</option>
                 </select>
             </div>
             <div class="text-center align-self-center flex-fill">
@@ -27,9 +25,12 @@
                     <div class="input-group-addon">
                     </div>
                     <div class="input-group-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-                            <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-calendar-check" viewBox="0 0 16 16">
+                            <path
+                                d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                            <path
+                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
                         </svg>
                     </div>
                 </div>
@@ -44,8 +45,8 @@
                 <tr>
                     <th scope="col">№</th>
                     <th scope="col">Проект</th>
-                    <th scope="col">Задача</th>
-                    <th scope="col">Дэдлайн</th>
+                    <th scope="col"><a href="" class="link-secondary">Задача</a></th>
+                    <th scope="col"><a href="" class="link-secondary">Дэдлайн</a></th>
                     <th scope="col">07</th>
                     <th scope="col">08</th>
                     <th scope="col">09</th>
@@ -65,21 +66,14 @@
                 </tr>
                 </thead>
                 <tbody class="table table-hover">
-                <tr>
-                    <th scope="row">1</th>
-                    <th>Проект 1</th>
-                    <th>Задача 1</th>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <th>Проект 2</th>
-                    <th>Задача 2</th>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <th>Проект 3</th>
-                    <th>Задача 3</th>
-                </tr>
+                @foreach($tasks as $task)
+                    <tr>
+                        <th scope="row">{{ $task->id }}</th>
+                        <th>{{ $task->project->name }}</th>
+                        <th>{{ $task->name }}</th>
+                        <th>{{ $task->deadline }}</th>
+                    </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>

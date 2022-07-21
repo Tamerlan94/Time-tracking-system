@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         $isCorrect = Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('password')]);
-        if($isCorrect){
+        if ($isCorrect) {
             $user = User::find(Auth::user()->getAuthIdentifier());
 
             $role = $user->role;
@@ -27,12 +27,14 @@ class LoginController extends Controller
                 'role' => $role->name,
                 'projects' => $projects,
                 'tasks' => $tasks_by_user
-                ]);
+            ]);
 
-            dd(session('tasks'));
+            //dd(session('tasks'));
 
-            //return view('/index');
-        }
-        else return back()->with('error', 'Failed to login');
+            return view('/index');
+        } else return back()->with([
+            'loginError' => 'Неправильный логин',
+            'passwordError' => 'Неправильный пароль'
+        ]);
     }
 }

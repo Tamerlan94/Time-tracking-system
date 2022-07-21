@@ -17,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
-Route::get('/', [TimeController::class, 'index'])->name('index');
+
+Route::middleware('auth')->group(function (){
+    Route::get('/', [TimeController::class, 'index'])->name('index');
+});
+
+
+Route::get('/admin', function (){
+    return view('admin');
+});
+Route::get('/manager', function (){
+    return view('manager');
+});
+

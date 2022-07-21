@@ -1,3 +1,5 @@
+@extends('layout.main')
+
 @section('content')
 <div class="container">
 <div class="border rounded-2">
@@ -30,7 +32,7 @@
                     <th scope="col">Время работы сегодня</th>
                     <th scope="col">Общее время работы</th>
                     <th scope="col">Статус задачи</th>
-   
+
                 </tr>
                 </thead>
                 <tbody class="table table-hover">
