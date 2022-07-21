@@ -22,11 +22,9 @@ class RoleCheckMiddleware
     {
         if($request->getRequestUri() === '/' || $request->getRequestUri() === '') {
             if(!Auth::check()){
-                return redirect()->route('index');
+                return redirect()->route('login');
             }
         }
-
-        $baseService = new BaseService();
 
         $uri = explode('/', $request->getRequestUri());
         $role = $request->cookie('role');
@@ -38,7 +36,7 @@ class RoleCheckMiddleware
                     if($role !== 'manager' && $role !== 'admin') return redirect()->route('index')->with('error', 'Access denied');
                     else return $next($request);
                 case 'user':
-                    if(session('role') !== 'admin') return redirect()->route('index')->with('error', 'Access denied');
+                    if($role !== 'admin') return redirect()->route('index')->with('error', 'Access denied');
                     break;
             }
         }

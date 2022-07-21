@@ -26,8 +26,4 @@ class BaseService
 
         return response('success', 200);
     }
-
-    public function getCurrentUserRole(){
-        return session('role.name');
-    }
 }
