@@ -26,16 +26,17 @@ class LoginController extends Controller
         $isCorrect = Auth::attempt(['username' => $request->get('username'), 'password' => $request->get('password')]);
         if($isCorrect){
             $user = User::find(Auth::user()->getAuthIdentifier());
-
+            Auth::login($user);
             $role = $user->role;
-            session([
-                'role' => $role->name,
-            ]);
 
             $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
-
-            dd(session('projects'));
-            //return view('/index');
+            /*session([
+               'role' => $role,
+            ]);*/
+            setcookie('role', $role->name);
+            //dd(session('projects'));
+            //dd(session('role.name'));
+            return redirect('/');
         }
         else return back()->with([
             'error' =>  'Failed to login',

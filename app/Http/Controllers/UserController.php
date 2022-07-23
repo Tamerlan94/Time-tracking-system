@@ -32,4 +32,8 @@ class UserController extends Controller
 
         return $this->baseService->updateOrCreate(new User(), $create_array);
     }
+
+    public function checkRole(){
+        return response('success');
+    }
 }

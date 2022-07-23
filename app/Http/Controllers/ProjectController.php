@@ -27,4 +27,8 @@ class ProjectController extends Controller
 
         return $this->baseService->updateOrCreate(new Project(), $create_array);
     }
+
+    public function checkRole(){
+        return response('success');
+    }
 }
