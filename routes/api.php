@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -22,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
 // роуты находятся в файле api, что означает что перед каждым адресом будет стоять prefix api
 Route::controller(UserController::class)->prefix('user')->name('user')->middleware('role.check')->group(function (){
     Route::get('check', 'checkRole');
@@ -37,4 +40,8 @@ Route::controller(TaskController::class)->prefix('task')->name('task')->middlewa
 Route::controller(ProjectController::class)->prefix('project')->name('project')->middleware('role.check')->group(function (){
     Route::get('check', 'checkRole');
     Route::post('create-update', 'createOrUpdateProject')->name('create');
+});
+
+Route::controller(ProjectController::class)->prefix('work-hours')->name('work-hours')->middleware('role.check')->group(function (){
+    Route::post('create-update', 'createOrUpdateWorkHours')->name('create');
 });
