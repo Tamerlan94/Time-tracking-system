@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TimeController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $tasks = Task::where('user_id', Auth::user()->id)->get();
+        return view('index', [
+            "tasks" => $tasks
+        ]);
     }
 }

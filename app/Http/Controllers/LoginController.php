@@ -29,7 +29,6 @@ class LoginController extends Controller
             Auth::login($user);
             $role = $user->role;
 
-
             $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
             /*session([
                'role' => $role,
