@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\RoleCheckMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Session\Middleware\StartSession;
 
 class Kernel extends HttpKernel
 {
@@ -41,6 +43,7 @@ class Kernel extends HttpKernel
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
             'throttle:api',
+            'session_api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
@@ -53,6 +56,8 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $routeMiddleware = [
+        'session_api' => StartSession::class,
+        'role.check' => RoleCheckMiddleware::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

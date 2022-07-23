@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('start_hour');
             $table->integer('end_hour');
             $table->date('date');
+            $table->string('comment')->nullable();
             $table->timestamps();
         });
     }

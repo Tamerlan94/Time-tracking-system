@@ -21,6 +21,7 @@ class WorkHoursSeeder extends Seeder
                 'task_id' => 1,
                 'start_hour' => 10,
                 'end_hour' => 18,
+                'comment' => 'shiiiiiiiiit',
                 'date' => '2022-07-19',
             ],
         ]);
