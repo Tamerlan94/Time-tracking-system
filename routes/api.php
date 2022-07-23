@@ -22,9 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/task', [TaskController::class, 'getTaskById'])->name('getTaskById');
-
-
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
 // роуты находятся в файле api, что означает что перед каждым адресом будет стоять prefix api
@@ -35,6 +32,7 @@ Route::controller(UserController::class)->prefix('user')->name('user')->middlewa
 
 Route::controller(TaskController::class)->prefix('task')->name('task')->middleware('role.check')->group(function () {
     Route::get('check', 'checkRole');
+    Route::post('', 'getTaskById')->name('getTaskById');
     Route::post('create-update', 'createOrUpdateTask')->name('create');
     Route::post('change-status', 'changeStatus')->name('change-status');
 });

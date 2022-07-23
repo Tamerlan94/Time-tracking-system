@@ -40,8 +40,8 @@ class TaskController extends Controller
 
     public function getTaskById(Request $request)
     {
-        $task = Task::find($request->id);
-        return response()->json(json_encode($task));
+        $task = Task::find($request->get('id'));
+        return response($task);
     }
 
     public function changeStatus(Request $request)
