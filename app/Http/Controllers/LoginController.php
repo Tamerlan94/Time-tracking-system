@@ -30,11 +30,9 @@ class LoginController extends Controller
             $role = $user->role;
 
             $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
-<<<<<<< HEAD
 
             //dd(session('projects'));
             return redirect()->route('index');
-=======
             /*session([
                'role' => $role,
             ]);*/
@@ -42,7 +40,7 @@ class LoginController extends Controller
             //dd(session('projects'));
             //dd(session('role.name'));
             return redirect('/');
->>>>>>> e1c3fb8169cbddd5a120d7dc02025b6aa6bf9adb
+
         }
         else return back()->with([
             'loginError' =>  'Неверный логин',
