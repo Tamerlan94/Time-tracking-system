@@ -26,6 +26,7 @@ class TaskController extends Controller
             'status_id' => $request->get('status_id'),
             'user_id' => $request->get('user_id'),
             'name' => $request->get('name'),
+            'description' => $request->get('description'),
             'deadline' => $request->get('deadline'),
         ];
 

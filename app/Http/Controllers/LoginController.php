@@ -42,4 +42,12 @@ class LoginController extends Controller
             'error' =>  'Failed to login',
         ]);
     }
+
+    public function logout(){
+        setcookie('role', '', [
+            'expires' => time()-3600,
+        ]);
+        Auth::logout();
+        return redirect()->route('login');
+    }
 }
