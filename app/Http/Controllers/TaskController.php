@@ -20,7 +20,8 @@ class TaskController extends Controller
         $this->taskService = new TaskService();
     }
 
-    public function createOrUpdateTask(Request $request){
+    public function createOrUpdateTask(Request $request)
+    {
         $create_array = [
             'project_id' => $request->get('project_id'),
             'status_id' => $request->get('status_id'),
@@ -30,20 +31,28 @@ class TaskController extends Controller
             'deadline' => $request->get('deadline'),
         ];
 
-        if($request->has('id')){
+        if ($request->has('id')) {
             $create_array['id'] = $request->get('id');
         }
 
         return $this->baseService->updateOrCreate(new Task(), $create_array);
     }
 
-    public function changeStatus(Request $request){
+    public function getTaskById(Request $request)
+    {
+        $task = Task::find($request->id);
+        return response()->json(json_encode($task));
+    }
+
+    public function changeStatus(Request $request)
+    {
         $this->taskService->changeStatus($request->get('id'), $request->get('status_id'));
 
         return response('success', 200);
     }
 
-    public function checkRole(){
+    public function checkRole()
+    {
         return response('success');
     }
 }
