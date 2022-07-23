@@ -34,11 +34,12 @@ class LoginController extends Controller
 
             $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
 
-            dd(session('projects'));
-            //return view('/index');
+            //dd(session('projects'));
+            return redirect()->route('index');
         }
         else return back()->with([
-            'error' =>  'Failed to login',
+            'loginError' =>  'Неверный логин',
+            'passwordError'=> 'Неправильный пароль'
         ]);
     }
 }

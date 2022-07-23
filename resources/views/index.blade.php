@@ -3,13 +3,14 @@
 @section('content')
     <div class="border rounded-2">
         <div class="d-flex">
-            <div class="p-2 text-center">
-                <img
-                    src="https://advancingdatajustice.turing.ac.uk/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"
-                    class="img-fluid" alt="avatar" style="width: 130px">
-                <select name="" class="form-select form-select-sm" disabled>
-                    <option selected value="1">{{ auth()->user()->role->name }}</option>
-                </select>
+            <div class="card ms-3" style="width: 100px;">
+                <img src="https://advancingdatajustice.turing.ac.uk/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"
+                     class="card-img-top" alt="avatar" style="width: 100px">
+                <div class="text-center p-1">
+                    <h5 class="card-title">{{ auth()->user()->role->name }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ auth()->user()->first_name }}</h6>
+                    <a class="btn btn btn-outline-secondary" href="/api/logout">выход</a>
+                </div>
             </div>
             <div class="text-center align-self-center flex-fill">
                 <h1>Учет рабочего времени</h1>
@@ -17,11 +18,11 @@
         </div>
         <hr class="m-2">
         <div class="d-flex justify-content-between m-3">
-            <button type="button" class="btn btn-secondary">Посмотреть персональную статистику</button>
+            <button type="button" class="btn btn-secondary" id="bbb">Посмотреть персональную статистику</button>
             <div class="d-flex">
                 <h4 class="me-2">Сегодня: </h4>
-                <div class="input-group date" data-provide="datepicker-inline">
-                    <input type="text" class="form-control">
+                <div class="input-group date">
+                    <input type="text" class="form-control datepicker" value="{{ date('d/m/Y') }}">
                     <div class="input-group-addon">
                     </div>
                     <div class="input-group-text">
@@ -35,18 +36,18 @@
                     </div>
                 </div>
             </div>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            </form>
+            <div class="d-flex" role="search" id="searchPlace">
+
+            </div>
         </div>
         <div>
-            <table class="table table-striped table-bordered">
+            <table class="table table-striped table-bordered" id="table" data-toggle="table" data-search="true" data-search-highlight="true">
                 <thead>
                 <tr>
                     <th scope="col">№</th>
-                    <th scope="col">Проект</th>
-                    <th scope="col"><a href="" class="link-secondary">Задача</a></th>
-                    <th scope="col"><a href="" class="link-secondary">Дэдлайн</a></th>
+                    <th scope="col" data-field="project" data-sortable="true" id="projectFilter">Проект</th>
+                    <th scope="col" data-field="task" data-searchable="true">Задача</th>
+                    <th scope="col" data-field="deadline" data-sortable="true" id="deadlineFilter">Дэдлайн</th>
                     <th scope="col">07</th>
                     <th scope="col">08</th>
                     <th scope="col">09</th>
@@ -70,12 +71,55 @@
                     <tr>
                         <th scope="row">{{ $task->id }}</th>
                         <th>{{ $task->project->name }}</th>
-                        <th>{{ $task->name }}</th>
+                        <th>
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                {{ $task->name }}
+                            </button>
+                        </th>
                         <th>{{ $task->deadline }}</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript" src="js/main.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
 @endsection
