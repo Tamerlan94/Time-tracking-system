@@ -23,15 +23,15 @@ $(document).ready(function () {
         let taskId = $(this).parent().children("td:first").text();
         console.log(taskId);
 
-        // $.ajax({
-        //     url: 'api/task',
-        //     method: 'post',
-        //     dataType: 'json',
-        //     data: {id: taskId},
-        //     success: function (e) {
-        //         console.log(e);
-        //     }
-        // })
+        $.ajax({
+            url: 'api/task',
+            method: 'post',
+            dataType: 'json',
+            data: {id: taskId},
+            success: function (e) {
+                console.log(e);
+            }
+        })
 
 
         let modalWindow = new bootstrap.Modal($('#modal'));

@@ -30,16 +30,16 @@ class LoginController extends Controller
             $role = $user->role;
 
             $this->projectService->setInSessionProjectsWithTasksForCurrentUser();
-
+            setcookie('role', $role->name);
             //dd(session('projects'));
             return redirect()->route('index');
             /*session([
                'role' => $role,
             ]);*/
-            setcookie('role', $role->name);
+
             //dd(session('projects'));
             //dd(session('role.name'));
-            return redirect('/');
+            //return redirect('/');
 
         }
         else return back()->with([
