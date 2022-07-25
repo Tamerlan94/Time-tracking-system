@@ -100,15 +100,57 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                    <div>
+                        <h5 class="modal-title" id="staticBackdropLabel">Задача 1</h5>
+                        <h6 class="">Проект 1</h6>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <textarea class="form-control mb-3" id="" rows="3" placeholder="Описание">Описание задачи</textarea>
+                    <div class="d-flex align-items-center mb-3">
+                        <p class="m-0 me-2">С</p>
+                        <div class="input-group date">
+                            <input type="text" class="form-control datepicker" value="{{ date('d/m/Y') }}">
+                            <div class="input-group-addon">
+                            </div>
+                            <div class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-calendar-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="m-0 me-2">По</p>
+                        <div class="input-group date">
+                            <input type="text" class="form-control datepicker" value="{{ date('d/m/Y') }}">
+                            <div class="input-group-addon">
+                            </div>
+                            <div class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-calendar-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <select class="form-select mb-3">
+                        <option disabled selected>Тип работы</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <textarea class="form-control mb-3" id="" rows="3" placeholder="Комментарий">Комментарий</textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                 </div>
             </div>
         </div>

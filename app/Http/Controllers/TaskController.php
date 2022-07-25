@@ -41,6 +41,7 @@ class TaskController extends Controller
     public function getTaskById(Request $request)
     {
         $task = Task::find($request->get('id'));
+        print_r($task);
         return response($task);
     }
 

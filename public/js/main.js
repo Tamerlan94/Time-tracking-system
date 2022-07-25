@@ -5,6 +5,15 @@ $(document).ready(function () {
         todayBtn: "linked",
     });
 
+    $('.input-daterange input').each(function() {
+        $(this).datepicker('clearDates',{
+            format: "dd/mm/yyyy",
+            todayHighlight: true,
+            todayBtn: "linked",
+        });
+    });
+
+
     setTimeout(function () {
         let element = $('.search').detach();
         element.appendTo('#searchPlace');
@@ -14,20 +23,20 @@ $(document).ready(function () {
         let taskId = $(this).parent().children("td:first").text();
         console.log(taskId);
 
-        $.ajax({
-            url: 'api/task',
-            method: 'get',
-            dataType: 'json',
-            data: {id: taskId},
-            success: function (data) {
-                console.log(data);
-            }
-        })
+        // $.ajax({
+        //     url: 'api/task',
+        //     method: 'post',
+        //     dataType: 'json',
+        //     data: {id: taskId},
+        //     success: function (e) {
+        //         console.log(e);
+        //     }
+        // })
 
 
-        // let modalWindow = new bootstrap.Modal($('#modal'));
-        $('.modal-title').append('Задача');
-        // modalWindow.show();
+        let modalWindow = new bootstrap.Modal($('#modal'));
+        // $('.modal-title').append('Задача');
+        modalWindow.show();
         // console.log($(this).text());
     });
 
