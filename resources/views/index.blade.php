@@ -22,7 +22,7 @@
             <div class="d-flex">
                 <h4 class="me-2">Сегодня: </h4>
                 <div class="input-group date">
-                    <input type="text" class="form-control datepicker" value="{{ date('d/m/Y') }}">
+                    <input type="text" class="form-control datepicker" value="{{ date('d-m-Y') }}">
                     <div class="input-group-addon">
                     </div>
                     <div class="input-group-text">
@@ -96,18 +96,21 @@
         </div>
     </div>
 
+
+{{--  Модальное окно  --}}
     <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <div>
                         <h5 class="modal-title" id="staticBackdropLabel">Задача 1</h5>
-                        <h6 class="">Проект 1</h6>
+                        <h6>Проект 1</h6>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control mb-3" id="" rows="3" placeholder="Описание">Описание задачи</textarea>
+                    <textarea @if(auth()->user()->role_id == 3) disabled @endif
+                        class="form-control mb-3" id="desc" rows="3" placeholder="Описание">Описание задачи</textarea>
                     <div class="d-flex align-items-center mb-3">
                         <p class="m-0 me-2">С</p>
                         <div class="input-group bootstrap-timepicker timepicker">
@@ -136,10 +139,10 @@
                         <option value="2">Two</option>
                         <option value="3">Three</option>
                     </select>
-                    <textarea class="form-control mb-3" id="" rows="3" placeholder="Комментарий">Комментарий</textarea>
+                    <textarea class="form-control mb-3" id="comment" rows="3" placeholder="Комментарий">Комментарий</textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Сохранить</button>
+                    <button type="button" class="btn btn-success" id="save" data-bs-dismiss="modal">Сохранить</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
                 </div>
             </div>
