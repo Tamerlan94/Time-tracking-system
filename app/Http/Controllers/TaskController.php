@@ -43,7 +43,17 @@ class TaskController extends Controller
         $task = Task::query()
             ->findOrFail($request->get('id'));
         //print_r($task);
-        return response()->json($task);
+        return response($task);
+    }
+
+    public function getInfoByTaskId(Request $request){
+        $task = Task::query()
+            ->where('id', '=', $request->get('id'))
+            ->with('project')
+            ->with('work_hours')
+            ->get();
+        //print_r($task);
+        return response($task);
     }
 
     public function changeStatus(Request $request)

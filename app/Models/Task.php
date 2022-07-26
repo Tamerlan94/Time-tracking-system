@@ -17,6 +17,10 @@ class Task extends Model
         return $this->belongsTo(Status::class);
     }
 
+    public function work_hours(){
+        return $this->hasMany(WorkHours::class);
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }

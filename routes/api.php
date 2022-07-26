@@ -30,9 +30,12 @@ Route::controller(UserController::class)->prefix('user')->name('user')->middlewa
     Route::post('create-update', 'createOrUpdateUser')->name('create');
 });
 
+Route::post('get-info', [TaskController::class, 'getInfoByTaskId']);
+Route::post('task', [TaskController::class, 'getTaskById'])->name('getTaskById');
+
 Route::controller(TaskController::class)->prefix('task')->name('task')->middleware('role.check')->group(function () {
     Route::get('check', 'checkRole');
-    Route::post('task', 'getTaskById')->name('getTaskById');
+    Route::post('', 'getTaskById')->name('getTaskById');
     Route::post('create-update', 'createOrUpdateTask')->name('create');
     Route::post('change-status', 'changeStatus')->name('change-status');
 });
