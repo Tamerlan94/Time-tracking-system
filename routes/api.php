@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -47,4 +48,8 @@ Route::controller(ProjectController::class)->prefix('project')->name('project')-
 
 Route::controller(ProjectController::class)->prefix('work-hours')->name('work-hours')->middleware('role.check')->group(function () {
     Route::post('create-update', 'createOrUpdateWorkHours')->name('create');
+});
+
+Route::controller(StatusController::class)->prefix('status')->name('status.')->group(function (){
+    Route::get('get-all', 'getAll')->name('get-all');
 });
