@@ -13,6 +13,8 @@ $(document).ready(function () {
         });
     });
 
+    $('#timepicker1').timepicker();
+    $('#timepicker2').timepicker();
 
     setTimeout(function () {
         let element = $('.search').detach();
@@ -30,6 +32,7 @@ $(document).ready(function () {
             data: {id: taskId},
             success: function (e) {
                 console.log(e);
+                $('.modal-header div h5').text(e.name);
             }
         })
 
@@ -39,7 +42,4 @@ $(document).ready(function () {
         modalWindow.show();
         // console.log($(this).text());
     });
-
-
-    console.log('end of js');
 });
