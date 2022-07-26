@@ -17,7 +17,6 @@ class TaskSeeder extends Seeder
     {
         DB::table('tasks')->insert([
             [
-                'id' => 1,
                 'project_id' => 1,
                 'status_id' => 1,
                 'user_id' => 2,
@@ -26,7 +25,6 @@ class TaskSeeder extends Seeder
                 'deadline' => '2022-07-20',
             ],
             [
-                'id' => 2,
                 'project_id' => 1,
                 'status_id' => 1,
                 'user_id' => 3,
@@ -35,7 +33,6 @@ class TaskSeeder extends Seeder
                 'deadline' => '2022-07-23',
             ],
             [
-                'id' => 3,
                 'project_id' => 1,
                 'status_id' => 1,
                 'user_id' => 1,
@@ -44,5 +41,7 @@ class TaskSeeder extends Seeder
                 'deadline' => '2022-07-25',
             ],
         ]);
+
+        //
     }
 }
