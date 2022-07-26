@@ -17,7 +17,6 @@ class WorkHours extends Model
         'task_id',
         'start_hour',
         'end_hour',
-        'comment',
         'date'
     ];
 }

@@ -22,6 +22,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 2,
                 'name' => 'Тестовая задача1',
                 'description' => 'shiiiiiiiiiiiiiiiiiiiiiiiiit',
+                'comment' => 'shiiiiiiiiit',
                 'deadline' => '2022-07-20',
             ],
             [
@@ -30,6 +31,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 3,
                 'name' => 'Тестовая задача2',
                 'description' => null,
+                'comment' => 'shiiiiiiiiit',
                 'deadline' => '2022-07-23',
             ],
             [
@@ -38,6 +40,7 @@ class TaskSeeder extends Seeder
                 'user_id' => 1,
                 'name' => 'Тестовая задача3',
                 'description' => null,
+                'comment' => 'shiiiiiiiiit',
                 'deadline' => '2022-07-25',
             ],
         ]);
