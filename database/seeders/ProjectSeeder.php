@@ -17,7 +17,6 @@ class ProjectSeeder extends Seeder
     {
         DB::table('projects')->insert([
             [
-                'id' => 1,
                 'name' => 'testproject',
                 'manager_id' => 3
             ],
