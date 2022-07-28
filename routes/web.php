@@ -18,6 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('authenticate');
-Route::get('/', [TimeController::class, 'index'])->name('index')->middleware('role.check');
-Route::get('/statistic', [TimeController::class, 'userStatistic'])->middleware('role.check')->name('userStatistic');
-Route::get('/manager', [TimeController::class, 'managerStatistic'])->middleware('role.check')->name('manageruserStatistic');
+Route::get('/', [TimeController::class, 'index'])->name('index');
+Route::get('/statistic', [TimeController::class, 'userStatistic'])->name('userStatistic');
+Route::get('/manager', [TimeController::class, 'managerStatistic'])->name('manageruserStatistic');

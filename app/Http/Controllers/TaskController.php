@@ -52,6 +52,7 @@ class TaskController extends Controller
             ->where('id', '=', $request->get('id'))
             ->with('project')
             ->with('work_hours')
+            ->with('status')
             ->first();
         //print_r($task);
         return response($task);

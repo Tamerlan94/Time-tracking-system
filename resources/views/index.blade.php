@@ -88,22 +88,22 @@
                         echo "table-alarm";
                     }
                     @endphp">{{ $task->deadline }}</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td v-bind:class="{'table-color': colored[0] === 'true'}"></td>
+                            <td v-bind:class="{'table-color': colored[1]}"></td>
+                            <td v-bind:class="{'table-color': colored[2]}"></td>
+                            <td v-bind:class="{'table-color': colored[3]}"></td>
+                            <td v-bind:class="{'table-color': colored[4]}"></td>
+                            <td v-bind:class="{'table-color': colored[5]}"></td>
+                            <td v-bind:class="{'table-color': colored[6]}"></td>
+                            <td v-bind:class="{'table-color': colored[7]}"></td>
+                            <td v-bind:class="{'table-color': colored[8]}"></td>
+                            <td v-bind:class="{'table-color': colored[9]  === 'true'}"></td>
+                            <td v-bind:class="{'table-color': colored[10]}"></td>
+                            <td v-bind:class="{'table-color': colored[11] === 'true'}"></td>
+                            <td v-bind:class="{'table-color': colored[12]}"></td>
+                            <td v-bind:class="{'table-color': colored[13]}"></td>
+                            <td v-bind:class="{'table-color': colored[14]}"></td>
+                            <td v-bind:class="{'table-color': colored[15]}"></td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -154,7 +154,7 @@
                             </div>
                         </div>
                         <select class="form-select mb-3" id="selectStatus" v-model="taskStatuses">
-                            <option disabled selected>Тип работы</option>
+                            <option disabled selected value="0">Тип работы</option>
                             @foreach($statuses as $status)
                                 @if($status->role_id == auth()->user()->role_id)
                                     <option value="{{ $status->id }}">{{ $status->name }}</option>
@@ -162,7 +162,7 @@
                             @endforeach
                         </select>
                         <textarea class="form-control mb-3" id="comment" rows="3"
-                                  placeholder="Комментарий" v-model="taskComment">@{{ taskComment }}</textarea>
+                                  placeholder="Комментарий">@{{ taskComment }}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="save" data-bs-dismiss="modal" v-on:click="saveTask">Сохранить</button>
