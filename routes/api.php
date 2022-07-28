@@ -5,6 +5,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WorkHoursController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,8 +47,9 @@ Route::controller(ProjectController::class)->prefix('project')->name('project')-
     Route::post('create-update', 'createOrUpdateProject')->name('create');
 });
 
-Route::controller(ProjectController::class)->prefix('work-hours')->name('work-hours')->group(function () {
+Route::controller(WorkHoursController::class)->prefix('work-hours')->name('work-hours')->group(function () {
     Route::post('create-update', 'createOrUpdateWorkHours')->name('create');
+    Route::post('update-by-task', 'updateByTaskAndWorkHours')->name('create');
 });
 
 Route::controller(StatusController::class)->prefix('status')->name('status.')->group(function (){

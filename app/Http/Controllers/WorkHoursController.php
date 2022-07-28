@@ -29,4 +29,21 @@ class WorkHoursController extends Controller
 
         return $this->baseService->updateOrCreate(new WorkHours(), $create_array);
     }
+
+    public function updateByTaskAndWorkHours(Request $request){
+
+        if($request->has('id')){
+            $create_array = [
+                'id' => $request->get('id'),
+                'start_hour' => $request->get('start_hour'),
+                'end_hour' => $request->get('end_hour'),
+                'status_id' => $request->get('status_id'),
+                'comment' => $request->get('comment'),
+            ];
+            return $this->baseService->updateByTaskAndWorkHours($create_array);
+
+        }
+
+        return response('There is no task id');
+    }
 }
