@@ -34,19 +34,19 @@ Route::controller(UserController::class)->prefix('user')->name('user')->middlewa
 Route::post('get-info', [TaskController::class, 'getInfoByTaskId']);
 Route::post('task', [TaskController::class, 'getTaskById'])->name('getTaskById');
 
-Route::controller(TaskController::class)->prefix('task')->name('task')->middleware('role.check')->group(function () {
+Route::controller(TaskController::class)->prefix('task')->name('task')->group(function () {
     Route::get('check', 'checkRole');
     Route::post('', 'getTaskById')->name('getTaskById');
     Route::post('create-update', 'createOrUpdateTask')->name('create');
     Route::post('change-status', 'changeStatus')->name('change-status');
 });
 
-Route::controller(ProjectController::class)->prefix('project')->name('project')->middleware('role.check')->group(function () {
+Route::controller(ProjectController::class)->prefix('project')->name('project')->group(function () {
     Route::get('check', 'checkRole');
     Route::post('create-update', 'createOrUpdateProject')->name('create');
 });
 
-Route::controller(ProjectController::class)->prefix('work-hours')->name('work-hours')->middleware('role.check')->group(function () {
+Route::controller(ProjectController::class)->prefix('work-hours')->name('work-hours')->group(function () {
     Route::post('create-update', 'createOrUpdateWorkHours')->name('create');
 });
 

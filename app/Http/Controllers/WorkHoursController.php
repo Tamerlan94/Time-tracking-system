@@ -21,7 +21,6 @@ class WorkHoursController extends Controller
             'start_hour' => $request->get('start_hour'),
             'end_hour' => $request->get('end_hour'),
             'date' => $request->get('date'),
-            'comment' => $request->get('comment'),
         ];
 
         if($request->has('id')){
