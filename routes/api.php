@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BaseController;
+use App\Http\Controllers\Controller;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\StatusController;
@@ -26,32 +29,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-// роуты находятся в файле api, что означает что перед каждым адресом будет стоять prefix api
-Route::controller(UserController::class)->prefix('user')->name('user')->group(function () {
-    Route::get('check', 'checkRole');
-    Route::post('create-update', 'createOrUpdateUser')->name('create');
-});
-
-Route::post('get-info', [TaskController::class, 'getInfoByTaskId']);
-Route::post('task', [TaskController::class, 'getTaskById'])->name('getTaskById');
-
-Route::controller(TaskController::class)->prefix('task')->name('task')->group(function () {
-    Route::get('check', 'checkRole');
-    Route::post('', 'getTaskById')->name('getTaskById');
-    Route::post('create-update', 'createOrUpdateTask')->name('create');
+Route::controller(BaseController::class)->group(function (){
+    //task
+    Route::post('get-info', 'getInfoByTaskId')->name('getInfoByTaskId');
+    Route::post('get-task', 'getTaskById')->name('getTaskById');
+    Route::post('task-action', 'createOrUpdateTask')->name('task-action');
     Route::post('change-status', 'changeStatus')->name('change-status');
-});
 
-Route::controller(ProjectController::class)->prefix('project')->name('project')->group(function () {
-    Route::get('check', 'checkRole');
-    Route::post('create-update', 'createOrUpdateProject')->name('create');
-});
 
-Route::controller(WorkHoursController::class)->prefix('work-hours')->name('work-hours')->group(function () {
-    Route::post('create-update', 'createOrUpdateWorkHours')->name('create');
-    Route::post('update-by-task', 'updateByTaskAndWorkHours')->name('create');
-});
+    //user
+    Route::post('user-action', 'createOrUpdateUser')->name('user-action');
+    Route::get('user-all', 'userAll')->name('user-all');
 
-Route::controller(StatusController::class)->prefix('status')->name('status.')->group(function (){
-    Route::get('get-all', 'getAll')->name('get-all');
+    //status
+    Route::get('get-statuses', 'getAll')->name('get-all');
+
+    //project
+    Route::post('project-action', 'createOrUpdateProject')->name('project-action');
+
+    //work hours
+    Route::post('hours-action', 'createOrUpdateWorkHours')->name('hours-action');
+    Route::post('update-by-task', 'updateByTaskAndWorkHours')->name('update-by-task');
+
 });
