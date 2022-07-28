@@ -4,8 +4,9 @@
     <div class="border rounded-2">
         <div class="d-flex">
             <div class="card ms-3" style="width: 100px;">
-                <img src="https://advancingdatajustice.turing.ac.uk/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"
-                     class="card-img-top" alt="avatar" style="width: 100px">
+                <img
+                    src="https://advancingdatajustice.turing.ac.uk/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"
+                    class="card-img-top" alt="avatar" style="width: 100px">
                 <div class="text-center p-1">
                     <h5 class="card-title">{{ auth()->user()->role->name }}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">{{ auth()->user()->first_name }}</h6>
@@ -18,13 +19,11 @@
         </div>
         <hr class="m-2">
         <div class="d-flex justify-content-between m-3">
-            <button type="button" class="btn btn-secondary" id="bbb">Посмотреть персональную статистику</button>
+            <a href="/statistic" type="button" class="btn btn-secondary" id="bbb">Посмотреть персональную статистику</a>
             <div class="d-flex">
                 <h4 class="me-2">Сегодня: </h4>
                 <div class="input-group date">
                     <input type="text" class="form-control datepicker" value="{{ date('d-m-Y') }}">
-                    <div class="input-group-addon">
-                    </div>
                     <div class="input-group-text">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-calendar-check" viewBox="0 0 16 16">
@@ -41,7 +40,8 @@
             </div>
         </div>
         <div>
-            <table class="table table-striped table-bordered" id="table" data-toggle="table" data-search="true" data-search-highlight="true">
+            <table class="table table-striped table-bordered" id="table" data-toggle="table" data-search="true"
+                   data-search-highlight="true">
                 <thead>
                 <tr>
                     <th scope="col">№</th>
@@ -72,7 +72,21 @@
                         <td>{{ $task->id }}</td>
                         <td>{{ $task->project->name }}</td>
                         <td class="task-b">{{ $task->name }}</td>
-                        <td>{{ $task->deadline }}</td>
+                        <td class="
+                        @php
+                    $date = strtotime($task->deadline);
+                    $currentDate = strtotime(date('d-m-Y'));
+                    $result = ($date - $currentDate) / (60*60*24);
+                    if($result <= 0){
+                        echo "table-end";
+                    }
+                    if($result <= 3 && $result > 1){
+                        echo "table-warn";
+                    }
+                    if($result == 1){
+                        echo "table-alarm";
+                    }
+                    @endphp">{{ $task->deadline }}</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -97,8 +111,9 @@
     </div>
 
 
-{{--  Модальное окно  --}}
-    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    {{--  Модальное окно  --}}
+    <div class="modal fade" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -110,15 +125,17 @@
                 </div>
                 <div class="modal-body">
                     <textarea @if(auth()->user()->role_id == 3) disabled @endif
-                        class="form-control mb-3" id="desc" rows="3" placeholder="Описание">Описание задачи</textarea>
+                    class="form-control mb-3" id="desc" rows="3" placeholder="Описание">Описание задачи</textarea>
                     <div class="d-flex align-items-center mb-3">
                         <p class="m-0 me-2">С</p>
                         <div class="input-group bootstrap-timepicker timepicker">
                             <input type="text" id="timepicker1" class="form-control">
                             <div class="input-group-text input-group-addon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-stopwatch" viewBox="0 0 16 16">
                                     <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
-                                    <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                                    <path
+                                        d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
                                 </svg>
                             </div>
                         </div>
@@ -126,20 +143,25 @@
                         <div class="input-group bootstrap-timepicker timepicker">
                             <input type="text" id="timepicker2" class="form-control">
                             <div class="input-group-text input-group-addon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-stopwatch" viewBox="0 0 16 16">
                                     <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
-                                    <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                                    <path
+                                        d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
                                 </svg>
                             </div>
                         </div>
                     </div>
-                    <select class="form-select mb-3">
+                    <select class="form-select mb-3" id="selectStatus">
                         <option disabled selected>Тип работы</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach($statuses as $status)
+                            @if($status->role_id == auth()->user()->role_id)
+                                <option value="{{ $status->id }}">{{ $status->name }}</option>
+                            @endif
+                        @endforeach
                     </select>
-                    <textarea class="form-control mb-3" id="comment" rows="3" placeholder="Комментарий">Комментарий</textarea>
+                    <textarea class="form-control mb-3" id="comment" rows="3"
+                              placeholder="Комментарий">Комментарий</textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success" id="save" data-bs-dismiss="modal">Сохранить</button>
@@ -151,7 +173,5 @@
 @endsection
 
 @section('script')
-    <script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-    <script type="text/javascript" src="js/bootstrap-timepicker.js"></script>
+
 @endsection

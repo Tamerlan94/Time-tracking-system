@@ -21,6 +21,7 @@ $(document).ready(function () {
         element.appendTo('#searchPlace');
     }, 10);
 
+    let user_id;
     let project_id;
     let project_name;
     let project_description;
@@ -29,6 +30,7 @@ $(document).ready(function () {
     let task_comment;
     let task_time_from;
     let task_time_to;
+    let status;
 
     $('.task-b').on("click", function (e) {
         let taskId = $(this).parent().children("td:first").text();
@@ -43,8 +45,9 @@ $(document).ready(function () {
                 console.log(e);
                 project_id = e.project_id;
                 task_id = e.id;
+                user_id = e.user_id;
 
-
+                status = $('#selectStatus').val();
                 task_name = $('.modal-header div h5').text(e.name);
                 project_name = $('.modal-header div h6').text(e.project.name);
                 project_description = $('.modal-body #desc').text(e.description);
@@ -58,19 +61,18 @@ $(document).ready(function () {
         // console.log($(this).text());
     });
 
-    $('#save').click(function (e){
+    $('#save').click(function (e) {
         e.preventDefault();
         $.ajax({
             url: 'api/createOrUpdateTask',
             method: 'post',
             dataType: 'json',
             data: {
-                // project_id:
-                //         status_id:
-                // user_id:
-                // name:
-                // description:
-
+                project_id: project_id,
+                status_id: status,
+                user_id: user_id,
+                name: task_name,
+                description: project_description,
             }
         });
     });

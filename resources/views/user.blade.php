@@ -8,19 +8,24 @@
                         <h1>Персональная статистика</h1>
                     </div>
                 </div>
-                
-                
+
+
                 <hr class="m-2">
 
-                
+
                 <div class="d-flex justify-content-between m-3">
                     <div class="d-flex">
                         <h4 class="me-2"> </h4>
-                        <div class="input-group date" data-provide="datepicker-inline" style="width: 200px">
-                            <input type="text" class="form-control">
-                            <div class="input-group-addon">
-                            </div>
+                        <div class="input-group date">
+                            <input type="text" class="form-control datepicker" value="{{ date('d-m-Y') }}">
                             <div class="input-group-text">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-calendar-check" viewBox="0 0 16 16">
+                                    <path
+                                        d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"></path>
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"></path>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -56,8 +61,8 @@
                         </tbody>
                     </table>
                 </div>
-                
-                   
+
+
             </div>
         </div>
 @endsection
