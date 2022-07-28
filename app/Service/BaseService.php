@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Models\Task;
 use App\Models\User;
+use App\Models\WorkHours;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -30,5 +31,24 @@ class BaseService
         } catch (\Exception $e){
             return $e;
         }
+    }
+
+    public function updateByTaskAndWorkHours(array $create_array)
+    {
+        $task = Task::query()
+            ->findOrFail($create_array['id'])
+            ->update([
+                'status_id' => $create_array['status_id'],
+                'comment' => $create_array['comment'],
+            ]);
+
+        $work_hours = WorkHours::query()
+            ->where('task_id', '=', $create_array['id'])
+            ->update([
+                'start_hour' => $create_array['start_hour'],
+                'end_hour' => $create_array['end_hour'],
+            ]);
+
+        return response('success');
     }
 }
