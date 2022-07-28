@@ -35,4 +35,10 @@ class TimeController extends Controller
             'users' => $users
         ]);
     }
+
+    public function admin()
+    {
+        $user = User::all();
+        return view('NewAdmin', ['users' => $user]);
+    }
 }

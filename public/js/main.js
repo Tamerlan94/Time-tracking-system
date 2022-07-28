@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $('.datepicker').datepicker({
-        format: "dd-mm-yyyy",
+        format: "yyyy-mm-dd",
         todayHighlight: true,
         todayBtn: "linked",
     });
@@ -18,6 +18,9 @@ $(document).ready(function () {
         console.log(taskId);
 
         maimApp.taskInfo(taskId);
+
+        let modalWindow = new bootstrap.Modal($('#modal'));
+        modalWindow.show();
 
     });
     // $.ajax({
@@ -49,6 +52,7 @@ $(document).ready(function () {
 let maimApp = new Vue({
     el: '#mainApp',
     data: {
+        taskId: '',
         taskName: '',
         taskProject: '',
         taskDescription: '',
@@ -56,22 +60,22 @@ let maimApp = new Vue({
         taskTo: '22',
         taskStatuses: '0',
         taskComment: '',
-        colored: [ false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false ],
-        colorArray: [ 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22 ]
+        colored: [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false],
+        colorArray: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
     },
     mounted() {
     },
     methods: {
-        checkColor(){
+        checkColor() {
             let first = this.taskFrom;
             let end = this.taskTo;
 
             let firstIndex = this.colorArray.findIndex((element, index, array) => {
-                if(first == element) return index;
+                if (first == element) return index;
             });
 
             let endIndex = this.colorArray.findIndex((element, index, array) => {
-                if(end == element) return index;
+                if (end == element) return index;
             });
 
             for (let i = firstIndex; i < endIndex; i++) {
@@ -79,10 +83,25 @@ let maimApp = new Vue({
             }
         },
         saveTask() {
+            axios
+                .post('api/update-by-task', {
+                    id: this.taskId,
+                    start_hour: this.taskFrom,
+                    end_hour: this.taskTo,
+                    status_id: this.taskStatuses,
+                    comment: this.taskComment
+                })
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
 
         },
-        taskInfo(taskId) {
-            axios
+        async taskInfo(taskId) {
+            this.taskId = taskId;
+            await axios
                 .post('api/get-info', {
                     id: taskId,
                 })
@@ -96,9 +115,6 @@ let maimApp = new Vue({
                     this.taskFrom = response.data.work_hours[0].start_hour;
                     this.taskTo = response.data.work_hours[0].end_hour;
                     this.taskStatuses = response.data.status_id;
-
-                    let modalWindow = new bootstrap.Modal($('#modal'));
-                    modalWindow.show();
 
                     this.checkColor();
                 })

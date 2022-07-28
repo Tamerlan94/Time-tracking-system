@@ -68,7 +68,10 @@ class BaseController extends Controller
     public function createOrUpdateUser(Request $request){
         if(!$request->has('id')){
             return User::query()
-                ->create($request->input());
+                ->create($request->input())
+                ->update([
+                    'password' => Hash::make($request->get('password'))
+                ]);
         } else {
             return User::query()
                 ->findOrFail($request->get('id'))

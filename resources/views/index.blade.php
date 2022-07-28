@@ -6,12 +6,15 @@
             <div class="d-flex">
                 <div class="card ms-3" style="width: 100px;">
                     <img
-                        src="https://advancingdatajustice.turing.ac.uk/assets/decidim/default-avatar-43686fd5db4beed0141662a012321bbccd154ee1d9188b0d1f41e37b710af3cb.svg"
-                        class="card-img-top" alt="avatar" style="width: 100px">
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAdVBMVEX///8UFBQAAAAMDAw2NjYREREICAgPDw8NDQ3d3d3t7e0FBQXy8vLMzMzj4+O4uLhtbW2Pj4+BgYFHR0fT09OdnZ0iIiIdHR2JiYlMTEzCwsKlpaV9fX2Tk5Pm5uZeXl4sLCxWVlZAQECvr69ycnI7OzugoKBAdYsBAAAGOUlEQVR4nO2d65qiMAyGpWhFRdR1xMMcPIx6/5e4RWTUkWJLAwlM3v2zz866T79N26RpGjsdhmEYhmEYhmEYhmEYhmEYhmGYP0YYTRbH/eHUPR32x8UkCrEHBMt4tu4LxUj6vi9HyW/769kYe1hQbKZKkOx5j/Sk+tPpBntw7oSfSslvdT8qlfLPZk/X4Yeajhp5KWryfgyxh1memRCF8lKEmGEPtCTjWDs9f0/WuJGbzkoERvoSArHCHq414dpkgt5N1XXDdpxoaSdQSVxG2IO2YSCkpUDPk2KAPWxzIosleCMQjbFi6PslBHqe7zdlLR5s12CGOGAP3Yx/ZQUqif+wB2/CuLxAJbEJrn9ZZpfJCJbYw3/NzMWEyojkY9ShYSyqoyeonzQctpmrEYlvNqGjCRMj0naK764mVEZ8xxZRyK5cNHOPv8MWUcTA3YTKiJQj8AWIwgW2jALm9oemZ+QcW0YBECZURsSWoecNSOEbthAt30AKv7GFaHEOaK4K6YY1UyCFU2whWkC2UtKbaVx8R2FKP8YWosU57E7p0XUXf0AhiEDKLr/9Nny6yi6pUGIL0bJzSbPdCHbYQrS03x+2P6Zpf1wKkIe6KKSbi3K6srhTSPfy4gtI4Re2ED2tz2K0fpaGEuj0JKkm9rdgkfcWW0o+GyiBSiLNqkygqDSBZmQKlEpMIZlQ7LpfO93wu9hyngHKd2cQzHs7Vig8KaRXsQA6SUlOU6AcTQa9XE0EO0nVNKVWqAhyv/2gkNpdd/sVAh0N7xSSOyQC5UozCOZMgTKJGQQziiCFJjcIlpwAuwtyzkKxHwEKHO2x5eQAlKRJoZmqAUtikE1juJYH3yBbKDwBy0RNsKXoaP/NDMxSJLoIrwBIpC2w0zk61+ofsSW8YlHqZV5GQDBae+LN+vnonQGX9FJseZTeUilvoo+UfJNA+x3CAyUT/CRT+RqWZS4S+w14mfdDqaIMwiUYOXj2Rux72IO24mxvRHHGHrQd1m9lm/A+9gHr7bRJG2mKpU9skC/MsKxbIFqbUMjaJvc2WmMPtwRWNxn0bilMWJlLbGCLoQux6Wbj030kU4xxjphm/tcEw4Nic46Fz3RN9tMRvbILc74M0uC9Zu6jGQZ+v4m+/p6XF6dNSK7pSUp9P4olio/r32sg4flwuUIqfEhzeR4zFIdz80RutkLItHdXQRo8TXAf1N8U20Ytx2gl0r6e6QumT00P0774TH6cGll9YkXw7j6XyfzWljUNODe5fUxFuov+hK99IeZkLw5vRKvgoWdiaqbh9qmRohTby0Xvw2YrRUDckOP9U1fdqzfYHO5/osx1SNfdb2+ifrKnG6W+d/NmY3YyGh9jkREfryryKouF6JLMnIYzX+Sflm5XntHm+1392vxMRI0nUf/SjJr7KGz6rLszG+y0foRai+hoWtz0ORDHHJOsNDbP/l/ElMqm80pfOtzV4wkiPEuDD5HQmMzPV0P1Lu3X1++D8GLK8GsyfdXJPNOIP1c/9T3lf2tMvjAg3imSLxEw/ZBIHSoak6VdpVevHwRB3+4jYokX6ERrp7oLUwKxRlqOKwFZUVrECCWf+hZDV+cXIeLay1BeODNw/JrNGJVuaF0ecahxNU5qW4H3jOorO/0H/E7NlF5dyfF9/TM0Q9RRwj/UHwjqkLirPIqLPIwleGPkVbzfDCTs8yZ7pKz02d6gZi+Yh1/ly8QvAgITiZVdVoUe9hRNkV5VSZwT5i56jzhVIxCoVxkE1fQ7A2rkBUMVtagDpFAtn14FG2qXxi6TIcHLG4Abe7gD3RoEvCmEO8Avha0KDesBtpwRsMkVHKBlKida20yKBPT7JE0IakTgjhBQwHWWAG5yBQdYuyxCAekjUOGp+3c4VQXUd0OBNtODBegZCmhLD1hgGoTQnaRQ05SoM0wBcYlArSCqASTPH9dxz1uWAOClxpCyCZUR3bP8oK2D4AF4jFLivWudALytfVGJjs2lEt4NoueKDIDzBWF/nwDQ55T2JAVowk/cWQC4C/C+pNA4J7/Jnu8znM/5xB0+gMtnheiwQlb4BxS231u03+O3P2prf+TdEdKnjHRXOO/Shl7vdoZhGIZhGIZhGIZhGIZhGIZhGA3/AQiEaMYtKlZeAAAAAElFTkSuQmCC"
+                        class="card-img-top" alt="avatar" style="width: 95px">
                     <div class="text-center p-1">
                         <h5 class="card-title">{{ auth()->user()->role->name }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ auth()->user()->first_name }}</h6>
                         <a class="btn btn btn-outline-secondary" href="/api/logout">выход</a>
+                        @if(auth()->user()->role_id == 1)
+                            <a class="btn btn btn-outline-secondary" href="/admin">админка</a>
+                        @endif
                     </div>
                 </div>
                 <div class="text-center align-self-center flex-fill">
@@ -88,7 +91,7 @@
                         echo "table-alarm";
                     }
                     @endphp">{{ $task->deadline }}</td>
-                            <td v-bind:class="{'table-color': colored[0] === 'true'}"></td>
+                            <td v-bind:class="{'table-color': colored[0]}"></td>
                             <td v-bind:class="{'table-color': colored[1]}"></td>
                             <td v-bind:class="{'table-color': colored[2]}"></td>
                             <td v-bind:class="{'table-color': colored[3]}"></td>
@@ -97,9 +100,9 @@
                             <td v-bind:class="{'table-color': colored[6]}"></td>
                             <td v-bind:class="{'table-color': colored[7]}"></td>
                             <td v-bind:class="{'table-color': colored[8]}"></td>
-                            <td v-bind:class="{'table-color': colored[9]  === 'true'}"></td>
+                            <td v-bind:class="{'table-color': colored[9]}"></td>
                             <td v-bind:class="{'table-color': colored[10]}"></td>
-                            <td v-bind:class="{'table-color': colored[11] === 'true'}"></td>
+                            <td v-bind:class="{'table-color': colored[11]}"></td>
                             <td v-bind:class="{'table-color': colored[12]}"></td>
                             <td v-bind:class="{'table-color': colored[13]}"></td>
                             <td v-bind:class="{'table-color': colored[14]}"></td>
@@ -162,7 +165,7 @@
                             @endforeach
                         </select>
                         <textarea class="form-control mb-3" id="comment" rows="3"
-                                  placeholder="Комментарий">@{{ taskComment }}</textarea>
+                                  placeholder="Комментарий" v-model="taskComment">@{{ taskComment }}</textarea>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-success" id="save" data-bs-dismiss="modal" v-on:click="saveTask">Сохранить</button>

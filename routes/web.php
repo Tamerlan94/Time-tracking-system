@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TimeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +20,4 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('authentic
 Route::get('/', [TimeController::class, 'index'])->name('index');
 Route::get('/statistic', [TimeController::class, 'userStatistic'])->name('userStatistic');
 Route::get('/manager', [TimeController::class, 'managerStatistic'])->name('manageruserStatistic');
+Route::get('/admin', [TimeController::class, 'admin'])->name('admin');

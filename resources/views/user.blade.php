@@ -9,9 +9,7 @@
                     </div>
                 </div>
 
-
                 <hr class="m-2">
-
 
                 <div class="d-flex justify-content-between m-3">
                     <div class="d-flex">
