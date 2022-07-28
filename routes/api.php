@@ -39,6 +39,7 @@ Route::controller(BaseController::class)->group(function (){
 
     //user
     Route::post('user-action', 'createOrUpdateUser')->name('user-action');
+    Route::get('user-all', 'userAll')->name('user-all');
 
     //status
     Route::get('get-statuses', 'getAll')->name('get-all');

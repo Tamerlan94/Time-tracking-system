@@ -74,7 +74,10 @@ class BaseController extends Controller
                 ->findOrFail($request->get('id'))
                 ->update($request->input());
         }
+    }
 
+    public function userAll(){
+        return User::all();
     }
 
     // STATUS
